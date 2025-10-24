@@ -1,23 +1,18 @@
 version: 2
 
 sources:
-  - name: Schema  # Logical name for the source
-    database: Project ID  # BigQuery project ID
-    schema: Dataset  # BigQuery dataset
+  - name: Google_Ads  # Logical name for the source
+    database: bigthink  # BigQuery project ID
+    schema: Google_Ads  # BigQuery dataset
     tables:
-      - name: ad_insights # name you want to call it
-        identifier: ad_insights # name for the source table
-        description: "Contains data about ** source synced from Connector Name."
-      - name: account_analytics # name you want to call it
-        identifier: account_performance # name for the source table
-        description: "Contains data about ** source synced from Connector Name."
-  - name: Schema  # Logical name for the source
-    database: Project ID  # BigQuery project ID
-    schema: Dataset  # BigQuery dataset
+      - name: account_performance_report # name you want to call it
+        identifier: account_performance_report # name for the source table
+        description: "Contains data about Google Ads source synced from Airbyte."
+
+  - name: Salesforce  # Logical name for the source
+    database: bigthink  # BigQuery project ID
+    schema: Salesforce  # BigQuery dataset
     tables:
-      - name: campaigns
-        identifier: campaigns
-        description: "Contains data about ** source synced from Connector Name."
-      - name: campaign_analytics
-        identifier: ad_campaign_analytics
+      - name: Account
+        identifier: Account
         description: "Contains data about ** source synced from Connector Name."
