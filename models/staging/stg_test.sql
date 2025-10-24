@@ -1,0 +1,1 @@
+select * from {{source("Google_Ads", "account_performance_report")}}
