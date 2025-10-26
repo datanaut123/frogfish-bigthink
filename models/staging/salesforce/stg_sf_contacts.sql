@@ -8,6 +8,7 @@ select
     email,
     ownerid as owner_id,
     accountid as account_id,
+    LeadSource as lead_source,
     date(createddate) as contact_created_at,
     pi__utm_term__c as utm_term,
     pi__utm_medium__c as utm_medium,
