@@ -16,3 +16,31 @@ sources:
       - name: Account
         identifier: Account
         description: "Contains data about ** source synced from Connector Name."
+      - name: Contact
+        identifier: Contact
+        description: "Contains data about ** source synced from Connector Name."
+      - name: Lead
+        identifier: Lead
+        description: "Contains data about ** source synced from Connector Name."
+      - name: LeadHistory
+        identifier: LeadHistory
+        description: "Contains data about ** source synced from Connector Name."
+      - name: OpportunityHistory
+        identifier: OpportunityHistory
+        description: "Contains data about ** source synced from Connector Name."
+      - name: Opportunity
+        identifier: Opportunity
+        description: "Contains data about ** source synced from Connector Name."
+      - name: OpportunityStage
+        identifier: OpportunityStage
+        description: "Contains data about ** source synced from Connector Name."
+      - name: Task
+        identifier: Task
+        description: "Contains data about ** source synced from Connector Name."
+  - name: Google_Ads  # Logical name for the source
+    database: bigthink  # BigQuery project ID
+    schema: Google_Ads  # BigQuery dataset
+    tables:
+      - name: campaign
+        identifier: campaign
+        description: "Contains data about GoogleAds source synced."
