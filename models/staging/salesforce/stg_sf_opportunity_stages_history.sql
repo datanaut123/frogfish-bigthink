@@ -6,8 +6,9 @@ with
             date(closedate) as opportunity_close_date,
             stagename as opportunity_stage,
             prevamount as prev_opportunity_amount,
-            createddate as opportunity_stage_change_date,
+            date(createddate) as opportunity_stage_change_date,
             opportunityid as opportunity_id,
+            CreatedById,
             row_number() over (
                 partition by opportunityid, stagename order by createddate asc
             ) as rn
@@ -22,7 +23,8 @@ select
     opportunity_stage,
     prev_opportunity_amount,
     opportunity_stage_change_date,
-    opportunity_id
+    opportunity_id,
+    CreatedById
 
 from opportunity_stages
 where rn = 1
