@@ -49,15 +49,25 @@ SELECT
     l.name,
     l.email,
     l.company,
-    l.lead_source,
+    CASE
+        WHEN l.lead_source IN ('BTC Website', 'Website', 'Web Form') THEN 'BTC Website'
+        WHEN l.lead_source IN ('Affiliate - Meridian 102', 'Affiliate - Meridian') THEN 'Affiliate - Meridian'
+        WHEN l.lead_source = 'Affiliate - Fundwise' THEN 'Affiliate - Fundwise'
+        WHEN l.lead_source = 'Affiliate - Charlie Chang' THEN 'Affiliate - Charlie Chang'
+        WHEN l.lead_source = 'Google Ads' THEN 'Google Ads'
+        WHEN l.lead_source = 'TikTok Blue' THEN 'TikTok Ads'
+        WHEN l.lead_source = 'Application Parser' THEN 'System / Integration'
+        WHEN l.lead_source = 'Manual QA Test' THEN 'Internal / Test'
+        WHEN l.lead_source IS NULL OR lead_source = 'null' THEN 'Unknown'
+        ELSE l.lead_source
+    END AS platform,
     l.industry,
     l.lead_status,
     l.lead_status_detail,
-
+    converted_opportunity_id,
     lead_created_date,
     l.lead_converted_date,
     l.last_status_change_date,
-
     l.utm_term,
     l.utm_medium,
     l.utm_source,

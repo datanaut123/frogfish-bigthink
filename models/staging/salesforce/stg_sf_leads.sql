@@ -18,6 +18,7 @@ select
     OwnerId as owner_id,
     ConvertedAccountId as converted_account_id,
     ConvertedContactId as converted_contact_id,
+    ConvertedOpportunityId as converted_opportunity_id,
     AnnualRevenue as annual_revenue,
     Website as company_website,
     DATE(CreatedDate) as lead_created_date,

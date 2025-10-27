@@ -12,6 +12,6 @@ select
     contactid as contact_id,
     date(createddate) as opportunity_created_date,
     date(CloseDate) as close_date,
-    recordtypeid as record_type_id,
+    recordtypeid as record_type_id
 
 from opps
