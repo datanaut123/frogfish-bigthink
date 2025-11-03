@@ -9,6 +9,10 @@ sources:
         identifier: account_performance_report # name for the source table
         description: "Contains data about Google Ads source synced from Airbyte."
 
+      - name: campaign
+        identifier: campaign
+        description: "Contains data about GoogleAds source synced."
+
   - name: Salesforce  # Logical name for the source
     database: bigthink  # BigQuery project ID
     schema: Salesforce  # BigQuery dataset
@@ -37,10 +41,3 @@ sources:
       - name: Task
         identifier: Task
         description: "Contains data about ** source synced from Connector Name."
-  - name: Google_Ads  # Logical name for the source
-    database: bigthink  # BigQuery project ID
-    schema: Google_Ads  # BigQuery dataset
-    tables:
-      - name: campaign
-        identifier: campaign
-        description: "Contains data about GoogleAds source synced."
