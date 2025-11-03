@@ -34,7 +34,9 @@ o as (
         contact_id,
         opportunity_created_date,
         close_date,
-        record_type_id
+        record_type_id,
+        funded_amount,
+        commission
         from {{ref('stg_sf_opportunity')}}
 ),
 leads as (
@@ -85,6 +87,8 @@ select
     o.opportunity_created_date,
     o.close_date,
     o.record_type_id,
+    o.funded_amount,
+    o.commission,
     l.utm_term,
     l.utm_medium,
     l.utm_source,

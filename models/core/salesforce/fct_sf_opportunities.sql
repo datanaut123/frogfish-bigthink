@@ -1,172 +1,130 @@
 SELECT DISTINCT
     converted_opportunity_id as opportunity_id,
-    lead_created_date AS date,
-    'Lead' AS stage,
+    hot_lead_date AS date,
+    'Hot Lead' AS stage,
     utm_campaign,
     utm_source,
     utm_medium,
     utm_term,
     utm_content,
-    1 AS leads,
-    0 AS opportunity,
-    0 AS prospecting,
-    0 AS application_info,
-    0 AS underwriting,
-    0 AS approval_contract,
-    0 AS closed_won,
-    0 AS closed_lost
-FROM {{ ref('fct_sf_leads') }}
+    funded_amount,
+    commission,
+    1 as hot_lead,
+    0 as open_not_contacted,
+    0 as working_contacted,
+    0 as working_application_out,
+    0 as closed_not_converted,
+    0 as closed_converted
+FROM {{ ref('fct_sf_leads_funds') }}
+WHERE hot_lead_date is not null
 
 UNION ALL
 
 SELECT DISTINCT
     converted_opportunity_id as opportunity_id,
-    converted_date AS date,
-    'Converted to Opportunity' AS stage,
+    open_not_contacted_date AS date,
+    'Open Not Contacted' AS stage,
     utm_campaign,
     utm_source,
     utm_medium,
     utm_term,
     utm_content,
-    0 AS leads,
-    1 AS opportunity,
-    0 AS prospecting,
-    0 AS application_info,
-    0 AS underwriting,
-    0 AS approval_contract,
-    0 AS closed_won,
-    0 AS closed_lost
-FROM {{ ref('fct_sf_leads') }}
-WHERE converted_date IS NOT NULL
+    funded_amount,
+    commission,
+    0 as hot_lead,
+    1 as open_not_contacted,
+    0 as working_contacted,
+    0 as working_application_out,
+    0 as closed_not_converted,
+    0 as closed_converted
+FROM {{ ref('fct_sf_leads_funds') }}
+WHERE open_not_contacted_date is not null
 
 UNION ALL
 
 SELECT DISTINCT
-    opportunity_id,
-    Prospecting AS date,
-    'Prospecting' AS stage,
+    converted_opportunity_id as opportunity_id,
+    working_contacted_date AS date,
+    'Working Contacted' AS stage,
     utm_campaign,
     utm_source,
     utm_medium,
     utm_term,
     utm_content,
-    0 AS leads,
-    0 AS opportunity,
-    1 AS prospecting,  
-    0 AS application_info,
-    0 AS underwriting,
-    0 AS approval_contract,
-    0 AS closed_won,
-    0 AS closed_lost
-FROM {{ ref('fct_sf_opportunities_stage') }}
-WHERE Prospecting IS NOT NULL
+    funded_amount,
+    commission,
+    0 as hot_lead,
+    0 as open_not_contacted,
+    1 as working_contacted,
+    0 as working_application_out,
+    0 as closed_not_converted,
+    0 as closed_converted
+FROM {{ ref('fct_sf_leads_funds') }}
+WHERE working_contacted_date is not null
 
 UNION ALL
 
 SELECT DISTINCT
-    opportunity_id,
-    Application_info AS date,
-    'Application' AS stage,
+    converted_opportunity_id as opportunity_id,
+    working_application_out_date AS date,
+    'Working Application Out' AS stage,
     utm_campaign,
     utm_source,
     utm_medium,
     utm_term,
     utm_content,
-    0 AS leads,
-    0 AS opportunity,
-    0 AS prospecting,
-    1 AS application_info,  
-    0 AS underwriting,
-    0 AS approval_contract,
-    0 AS closed_won,
-    0 AS closed_lost
-FROM {{ ref('fct_sf_opportunities_stage') }}
-WHERE Application_info IS NOT NULL
+    funded_amount,
+    commission,
+    0 as hot_lead,
+    0 as open_not_contacted,
+    0 as working_contacted,
+    1 as working_application_out,
+    0 as closed_not_converted,
+    0 as closed_converted
+FROM {{ ref('fct_sf_leads_funds') }}
+WHERE working_application_out_date is not null
 
 UNION ALL
 
 SELECT DISTINCT
-    opportunity_id,
-    Underwriting AS date,
-    'Underwriting' AS stage,
+    converted_opportunity_id as opportunity_id,
+    closed_not_converted_date AS date,
+    'Closed Not Converted' AS stage,
     utm_campaign,
     utm_source,
     utm_medium,
     utm_term,
     utm_content,
-    0 AS leads,
-    0 AS opportunity,
-    0 AS prospecting,
-    0 AS application_info,
-    1 AS underwriting, 
-    0 AS approval_contract,
-    0 AS closed_won,
-    0 AS closed_lost
-FROM {{ ref('fct_sf_opportunities_stage') }}
-WHERE Underwriting IS NOT NULL
+    funded_amount,
+    commission,
+    0 as hot_lead,
+    0 as open_not_contacted,
+    0 as working_contacted,
+    0 as working_application_out,
+    1 as closed_not_converted,
+    0 as closed_converted
+FROM {{ ref('fct_sf_leads_funds') }}
+WHERE closed_not_converted_date is not null
 
 UNION ALL
 
 SELECT DISTINCT
-    opportunity_id,
-    Approval AS date,
-    'Approval Contract' AS stage,
+    converted_opportunity_id as opportunity_id,
+    closed_converted_date AS date,
+    'Closed Converted' AS stage,
     utm_campaign,
     utm_source,
     utm_medium,
     utm_term,
     utm_content,
-    0 AS leads,
-    0 AS opportunity,
-    0 AS prospecting,
-    0 AS application_info,
-    0 AS underwriting,
-    1 AS approval_contract, 
-    0 AS closed_won,
-    0 AS closed_lost
-FROM {{ ref('fct_sf_opportunities_stage') }}
-WHERE Approval IS NOT NULL
+    funded_amount,
+    commission,
+    0 as hot_lead,
+    0 as open_not_contacted,
+    0 as working_contacted,
+    0 as working_application_out,
+    0 as closed_not_converted,
+    1 as closed_converted
+FROM {{ ref('fct_sf_leads_funds') }}
+WHERE closed_converted_date is not null
 
-UNION ALL
-
-SELECT DISTINCT
-    opportunity_id,
-    Funded AS date,
-    'Funded' AS stage,
-    utm_campaign,
-    utm_source,
-    utm_medium,
-    utm_term,
-    utm_content,
-    0 AS leads,
-    0 AS opportunity,
-    0 AS prospecting,
-    0 AS application_info,
-    0 AS underwriting,
-    0 AS approval_contract,
-    1 AS closed_won,  
-    0 AS closed_lost
-FROM {{ ref('fct_sf_opportunities_stage') }}
-WHERE Funded IS NOT NULL
-
-UNION ALL
-
-SELECT DISTINCT
-    opportunity_id,
-    Closed AS date,
-    'Closed' AS stage,
-    utm_campaign,
-    utm_source,
-    utm_medium,
-    utm_term,
-    utm_content,
-    0 AS leads,
-    0 AS opportunity,
-    0 AS prospecting,
-    0 AS application_info,
-    0 AS underwriting,
-    0 AS approval_contract,
-    0 AS closed_won,
-    1 AS closed_lost  
-FROM {{ ref('fct_sf_opportunities_stage') }}
-WHERE Closed IS NOT NULL
