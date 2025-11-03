@@ -9,9 +9,9 @@ lead_history AS (
 stage_dates AS (
     SELECT
         lead_id,
-        MIN(CASE WHEN new_value = '1st Attempt' THEN lead_stage_date END) AS first_attempt_date,
+        {# MIN(CASE WHEN new_value = '1st Attempt' THEN lead_stage_date END) AS first_attempt_date,
         MIN(CASE WHEN new_value = 'Working - Contacted' THEN lead_stage_date END) AS contacted_date,
-        MIN(CASE WHEN new_value IN ('Hot Lead', 'Hot Email Lead') THEN lead_stage_date END) AS hot_lead_date,
+        MIN(CASE WHEN new_value IN ('Hot Lead') THEN lead_stage_date END) AS hot_lead_date,
 
         MIN(CASE WHEN new_value = 'Meeting Booked' THEN lead_stage_date END) AS meeting_booked_date,
         MIN(CASE WHEN new_value = 'Meeting Completed' THEN lead_stage_date END) AS meeting_completed_date,
@@ -39,7 +39,13 @@ stage_dates AS (
 
         MIN(CASE WHEN new_value = 'Closed - Converted' THEN lead_stage_date END) AS converted_date,
         MIN(CASE WHEN new_value = 'Future Client' THEN lead_stage_date END) AS future_client_date,
-        MIN(CASE WHEN new_value = 'Closed - Not Converted' THEN lead_stage_date END) AS closed_not_converted_date
+        MIN(CASE WHEN new_value = 'Closed - Not Converted' THEN lead_stage_date END) AS closed_not_converted_date #}
+        MIN(CASE WHEN new_value =  'Hot Lead' THEN lead_stage_date END) AS hot_lead_date,
+        MIN(CASE WHEN new_value =  'Open - Not Contacted' THEN lead_stage_date END) AS open_not_contacted_date,
+        MIN(CASE WHEN new_value =  'Working - Contacted' THEN lead_stage_date END) AS working_contacted_date,
+        MIN(CASE WHEN new_value =  'Working - Application Out' THEN lead_stage_date END) AS working_application_out_date,
+        MIN(CASE WHEN new_value =  'Closed - Not Converted' THEN lead_stage_date END) AS closed_not_converted_date,
+        MIN(CASE WHEN new_value =  'Closed - Converted' THEN lead_stage_date END) AS closed_converted_date
     FROM lead_history
     GROUP BY lead_id
 )
@@ -76,14 +82,19 @@ SELECT
     l.is_converted,
     s.* EXCEPT(lead_id),
 
-
-    CASE WHEN s.converted_date IS NOT NULL THEN 1 ELSE 0 END AS Converted,
+    CASE WHEN s.hot_lead_date IS NOT NULL THEN 1 ELSE 0 END AS hot_lead,
+    CASE WHEN s.open_not_contacted_date IS NOT NULL THEN 1 ELSE 0 END AS open_not_contacted,
+    CASE WHEN s.working_contacted_date IS NOT NULL THEN 1 ELSE 0 END AS working_contacted,
+    CASE WHEN s.working_application_out_date IS NOT NULL THEN 1 ELSE 0 END AS working_application_out,
+    CASE WHEN s.closed_not_converted_date IS NOT NULL THEN 1 ELSE 0 END AS closed_not_converted,
+    CASE WHEN s.closed_converted_date IS NOT NULL THEN 1 ELSE 0 END AS closed_converted,
+    {# CASE WHEN s.converted_date IS NOT NULL THEN 1 ELSE 0 END AS Converted,
     CASE WHEN s.closed_not_converted_date IS NOT NULL THEN 1 ELSE 0 END AS Not_Converted,
     CASE WHEN s.meeting_booked_date IS NOT NULL THEN 1 ELSE 0 END AS had_meeting,
     CASE WHEN s.application_out_date IS NOT NULL THEN 1 ELSE 0 END AS submitted_application,
     CASE WHEN s.not_qualified_date IS NOT NULL 
        OR s.not_interested_date IS NOT NULL 
-       OR s.do_not_contact_date IS NOT NULL THEN 1 ELSE 0 END AS is_disqualified
+       OR s.do_not_contact_date IS NOT NULL THEN 1 ELSE 0 END AS is_disqualified #}
 
 FROM leads l
 LEFT JOIN stage_dates s ON l.lead_id = s.lead_id
