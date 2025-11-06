@@ -1,5 +1,5 @@
 with accounts as (select
-    date, campaign_id, campaign_name, spend, clicks, impressions, 'Google' as platform, a.account_id, b.account_name
+    date, campaign_id, campaign_name, spend, clicks, impressions, 'Google' as platform, a.account_id, b.account_name, conversions
 
 from {{ ref("stg_ga_campaigns") }} as a 
 left join {{ ref("stg_ga_accounts") }} as b on a.account_id = b.account_id

@@ -1,8 +1,8 @@
 with leads as (
 select
     date,
-    stage,
-    'Google' as platform,
+    case when lead_source = 'Google Ads' then 'Google' else lead_source end as platform,
+    case when lead_source = 'Google Ads' then 'Paid' else 'Organic' end as channel,
     sum(funded_amount) as funded_amount,
     sum(commission) as commission,
     sum(hot_lead) as hot_lead,
@@ -13,27 +13,22 @@ select
     sum(closed_converted) as closed_converted
 
 from {{ ref("fct_sf_opportunities") }}
-where lead_source = 'Google Ads'
 group by
     date,
-    stage,
-    utm_term, 
-    utm_content,
-    utm_medium,
-    utm_source,
-    utm_campaign
+    lead_source
 ),
 
     ads as (
         select
             date,
             platform,
+            'Paid' as channel,
             sum(spend) as spend,
             sum(clicks) as clicks,
             sum(impressions) as impressions,
 
         from {{ ref("mrt_ads") }}
-        group by date, campaign_id, campaign_name, platform
+        group by date,  platform
     ),
 
     data_join as (
@@ -41,7 +36,9 @@ group by
             coalesce(a.date, l.date) as date,
             a.date as a_date,
             coalesce(a.platform, l.platform) as platform,
+            coalesce(a.channel, l.channel) as channel,
             a.platform as a_platform,
+            a.channel as a_channel,
             funded_amount,
             commission,
             hot_lead,
@@ -55,13 +52,13 @@ group by
             impressions
 
         from ads as a
-        full join leads as l on a.date = l.date and a.platform = l.platform
+        full join leads as l on a.date = l.date and a.platform = l.platform and a.channel = l.channel
     ),
     deduplication as (
         select
             *,
             row_number() over (
-                partition by a_date, a_platform order by a_date asc
+                partition by a_date, a_platform, a_channel order by a_date asc
 
             ) as rn
         from data_join
