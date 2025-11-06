@@ -5,7 +5,7 @@ WITH cte as (
 
 SELECT
     Id,
-    Field as life_cycle_stage,
+    Field as field,
     LeadId as lead_id,
     NewValue as new_value,
     OldValue as old_value,
