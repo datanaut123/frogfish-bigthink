@@ -23,8 +23,7 @@ select
     opportunity_stage,
     prev_opportunity_amount,
     opportunity_stage_change_date,
-    opportunity_id,
-    CreatedById
+    opportunity_id
 
 from opportunity_stages
 where rn = 1

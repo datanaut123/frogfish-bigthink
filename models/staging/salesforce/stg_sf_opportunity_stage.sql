@@ -1,9 +1,7 @@
 with opps as (select * from {{ source("Salesforce", "OpportunityStage") }})
 
-select
+select distinct 
     id as stage_id,
-    masterlabel as stage_status,
-    Date(CreatedDate) as opportunity_stage_change_date,
-    CreatedById
+    masterlabel as opportunity_stage
 
 from opps

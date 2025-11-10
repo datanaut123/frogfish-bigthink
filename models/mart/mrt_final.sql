@@ -6,11 +6,14 @@ select
     sum(funded_amount) as funded_amount,
     sum(commission) as commission,
     sum(hot_lead) as hot_lead,
-    sum(open_not_contacted) as open_not_contacted,
     sum(working_contacted) as working_contacted,
     sum(working_application_out) as working_application_out,
-    sum(closed_not_converted) as closed_not_converted,
-    sum(closed_converted) as closed_converted
+    sum(application_in) as application_in,
+    sum(approved) as approved,
+    sum(declined) as declined,
+    sum(contract_in) as contract_in,
+    sum(contract_out) as contract_out,
+    sum(funded) as funded
 
 from {{ ref("fct_sf_opportunities") }}
 group by
@@ -42,11 +45,14 @@ group by
             funded_amount,
             commission,
             hot_lead,
-            open_not_contacted,
             working_contacted,
             working_application_out,
-            closed_not_converted,
-            closed_converted,
+            application_in,
+            approved,
+            declined,
+            contract_in,
+            contract_out,
+            funded,
             spend,
             clicks,
             impressions
@@ -64,7 +70,7 @@ group by
         from data_join
     )
 select
-    * except (spend, impressions, clicks, a_date, a_platform),
+    * except (spend, impressions, clicks, a_date, a_platform, a_channel),
     case when rn = 1 then spend else 0 end as spend,
     case when rn = 1 then impressions else 0 end as impressions,
     case when rn = 1 then clicks else 0 end as clicks
