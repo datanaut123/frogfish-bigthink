@@ -14,5 +14,11 @@ select
     date(CloseDate) as close_date,
     recordtypeid as record_type_id,
     csbs__Funded__c as funded_amount,
-    csbs__Commission_Amount__c as commission
+    csbs__Commission_Amount__c as commission,
+    UTM_Campaign__c as utm_campaign,
+    UTM_Source__c as utm_source,
+    UTM_Medium__c as utm_medium,
+    UTM_Content__c as utm_content
+
+    
 from opps
