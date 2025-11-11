@@ -31,15 +31,11 @@ with
     lead_history as (
         select
             lead_id,
-            new_value as lead_stage,
-            lead_stage_date,
-            row_number() over (
-                partition by lead_id, new_value order by lead_stage_date
-            ) as rn
+            lead_stage,
+            lead_stage_date
 
         from {{ ref('stg_sf_lead_history') }}
-        where field in ('Status')
-        qualify rn = 1
+
     ),
 
 opportunities as (

@@ -1,13 +1,37 @@
-WITH cte as (
-    select *
-    from {{source('Salesforce', 'LeadHistory')}}
-)
+with
+    cte_1 as (
+        select
+            leadid as lead_id,
+            newvalue as lead_stage,
+            date(createddate) as lead_stage_date,
+            row_number() over (
+                partition by leadid, newvalue order by createddate asc
+            ) as rn
+        from {{ source('Salesforce', 'LeadHistory') }}
+        where field in ('Status') and newvalue <> 'Hot Lead'
+        -- qualify rn = 1
+    ),
 
-SELECT
-    Id,
-    Field as field,
-    LeadId as lead_id,
-    NewValue as new_value,
-    OldValue as old_value,
-    date(createddate) as lead_stage_date
-    FROM cte
+    cte_2 as (
+        select
+            leadid as lead_id,
+            oldvalue as lead_stage,
+            date(createddate) as lead_stage_date,
+            row_number() over (
+                partition by leadid, newvalue order by createddate asc
+            ) as rn
+        from {{ source('Salesforce', 'LeadHistory') }}
+        where field in ('Status') and oldvalue = 'Hot Lead'
+       --  qualify rn = 1
+
+    )
+
+select lead_id, lead_stage, lead_stage_date
+
+from cte_1
+
+union all
+
+select lead_id, lead_stage, lead_stage_date
+
+from cte_2
