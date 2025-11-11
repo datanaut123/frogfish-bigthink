@@ -18,7 +18,8 @@ select
     UTM_Campaign__c as utm_campaign,
     UTM_Source__c as utm_source,
     UTM_Medium__c as utm_medium,
-    UTM_Content__c as utm_content
+    UTM_Content__c as utm_content,
+    ISO_Name__c as iso_name
 
     
 from opps

@@ -22,7 +22,8 @@ with
             utm_medium,
             utm_source,
             utm_content,
-            utm_campaign
+            utm_campaign,
+            iso_name
 
         from {{ ref('stg_sf_leads') }}
     ),
@@ -84,6 +85,7 @@ select
     utm_source,
     utm_content,
     utm_campaign,
+    iso_name
 
 from leads as le
 left join lead_history as lh on le.lead_id = lh.lead_id
