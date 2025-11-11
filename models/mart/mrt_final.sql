@@ -1,8 +1,8 @@
 with leads as (
 select
-    date,
-    case when lead_source = 'Google Ads' then 'Google' else lead_source end as platform,
-    case when lead_source = 'Google Ads' then 'Paid' else 'Organic' end as channel,
+    Date(date) as date,
+    case when utm_medium like '%cpc%' then 'Google' else 'Other' end as platform,
+    case when utm_medium like '%cpc%'then 'Paid' else 'Other' end as channel,
     sum(funded_amount) as funded_amount,
     sum(commission) as commission,
     sum(hot_lead) as hot_lead,
@@ -16,14 +16,15 @@ select
     sum(funded) as funded
 
 from {{ ref("fct_sf_opportunities") }}
+
 group by
     date,
-    lead_source
+    utm_medium
 ),
 
     ads as (
         select
-            date,
+            date(date) as date,
             platform,
             'Paid' as channel,
             sum(spend) as spend,
