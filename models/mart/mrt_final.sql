@@ -1,8 +1,8 @@
 with leads as (
 select
     Date(date) as date,
-    case when utm_medium like '%cpc%' then 'Google' else 'Other' end as platform,
-    case when utm_medium like '%cpc%'then 'Paid' else 'Other' end as channel,
+    case when iso_name = 'BTC Google' then 'Google' else 'Other' end as platform,
+    case when iso_name = 'BTC Google' then 'Paid' else 'Other' end as channel,
     sum(funded_amount) as funded_amount,
     sum(commission) as commission,
     sum(hot_lead) as hot_lead,
@@ -19,7 +19,7 @@ from {{ ref("fct_sf_opportunities") }}
 
 group by
     date,
-    utm_medium
+    iso_name
 ),
 
     ads as (

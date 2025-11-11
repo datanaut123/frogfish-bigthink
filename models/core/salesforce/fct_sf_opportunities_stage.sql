@@ -16,7 +16,8 @@ with oppor as (
     utm_campaign,
     utm_source,
     utm_medium,
-    utm_content
+    utm_content,
+    iso_name
 
     from {{ref("stg_sf_opportunity")}}
 ),
@@ -48,7 +49,8 @@ select
     utm_campaign,
     utm_source,
     utm_medium,
-    utm_content
+    utm_content,
+    iso_name
 
     from oppor as opp 
     left join oppor_stages as oppst on opp.opportunity_id = oppst.opportunity_id 

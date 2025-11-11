@@ -29,5 +29,6 @@ select
     csbs__UTM_Source__c as utm_source,
     csbs__UTM_Content__c as utm_content,
     csbs__UTM_Campaign__c as utm_campaign,
+    ISO_Name__c as iso_name
 
 from leads
