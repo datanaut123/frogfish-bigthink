@@ -55,6 +55,7 @@ with
             coalesce(a.platform, l.platform) as platform,
             coalesce(a.channel, l.channel) as channel,
             coalesce(a.campaign_name, l.campaign_name) as campaign_name,
+            a.campaign_name as a_campaign_name,
             a.platform as a_platform,
             a.channel as a_channel,
             funded_amount,
@@ -87,13 +88,13 @@ with
         select
             *,
             row_number() over (
-                partition by a_date, a_platform, a_channel order by a_date asc
+                partition by a_date, a_platform, a_channel, a_campaign_name order by a_date asc
 
             ) as rn
         from data_join
     )
 select
-    * except (spend, impressions, clicks, a_date, a_platform, a_channel),
+    * except (spend, impressions, clicks, a_date, a_platform, a_channel, a_campaign_name),
     case when rn = 1 then spend else 0 end as spend,
     case when rn = 1 then impressions else 0 end as impressions,
     case when rn = 1 then clicks else 0 end as clicks
