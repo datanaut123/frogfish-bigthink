@@ -18,8 +18,8 @@ with
             sum(application_in) as application_in,
             sum(approved) as approved,
             sum(declined) as declined,
-            sum(contract_in) as contract_in,
-            sum(contract_out) as contract_out,
+            sum(contracts_in) as contract_in,
+            sum(contracts_out) as contract_out,
             sum(funded) as funded
 
         from {{ ref("fct_sf_opportunities") }}
