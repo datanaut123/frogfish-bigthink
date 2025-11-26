@@ -1,3 +1,4 @@
 sqlfluff
 dbt-bigquery
 shandy-sqlfmt
+click>=8.0.0,<8.1.8
