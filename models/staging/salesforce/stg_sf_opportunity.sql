@@ -12,6 +12,7 @@ select
     contactid as contact_id,
     date(createddate) as opportunity_created_date,
     date(CloseDate) as close_date,
+    date(LastStageChangeDate) as last_stage_change_date,
     recordtypeid as record_type_id,
     csbs__Funded__c as funded_amount,
     csbs__Commission_Amount__c as commission,
