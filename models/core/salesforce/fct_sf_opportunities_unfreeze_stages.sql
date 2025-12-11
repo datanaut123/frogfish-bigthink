@@ -1,7 +1,7 @@
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -60,15 +60,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Open - Not Contacted'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Open - Not Contacted'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -127,15 +127,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Closed - Not Converted'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Closed - Not Converted'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -194,15 +194,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'New'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'New'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -261,15 +261,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Do Not Contact'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Do Not Contact'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -328,15 +328,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Defaulted Merchant'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Defaulted Merchant'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -395,15 +395,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Specialty - DNQ'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Specialty - DNQ'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -462,15 +462,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Specialty Submitted'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Specialty Submitted'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -529,15 +529,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Funded - In Repayment'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Funded - In Repayment'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -596,15 +596,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Defaulted'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Defaulted'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -663,15 +663,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Offers In'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Offers In'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -730,15 +730,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = '3rd Attempt'
+from {{ ref('stg_sf_leads') }}
+where lead_status = '3rd Attempt'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -797,15 +797,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Open'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Open'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -864,15 +864,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Closed - Lost'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Closed - Lost'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -931,15 +931,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Specialty Prospect'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Specialty Prospect'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -998,15 +998,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Specialty - Unresponsive'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Specialty - Unresponsive'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -1065,15 +1065,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Specialty Funders Declined'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Specialty Funders Declined'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -1132,15 +1132,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Working - Application Out'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Working - Application Out'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -1199,15 +1199,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Working - Contacted'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Working - Contacted'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -1266,15 +1266,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'FBIG Startup'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'FBIG Startup'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -1333,15 +1333,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Specialty - App Out'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Specialty - App Out'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -1400,15 +1400,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Opportunity'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Opportunity'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -1467,15 +1467,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Specialty - DNQ Future'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Specialty - DNQ Future'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -1534,15 +1534,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Specialty - In Contact'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Specialty - In Contact'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -1601,15 +1601,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Specialty Pending Additional Info'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Specialty Pending Additional Info'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -1668,15 +1668,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Funders Declined'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Funders Declined'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -1735,8 +1735,8 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Specialty Declined'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Specialty Declined'
 
 union all
 
@@ -1809,8 +1809,8 @@ union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -1869,15 +1869,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Closed - Converted'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Closed - Converted'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -1936,15 +1936,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Pending Additional INFO'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Pending Additional INFO'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -2003,15 +2003,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Specialty'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Specialty'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -2070,15 +2070,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Submitted to Funders'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Submitted to Funders'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -2137,15 +2137,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Closed - Won'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Closed - Won'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -2204,15 +2204,15 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Specialty - App In Collecting Docs'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Specialty - App In Collecting Docs'
 
 union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
-    lead_stage as stage,
+    last_status_change_date as date,
+    lead_status as stage,
     utm_campaign,
     utm_source,
     utm_medium,
@@ -2271,14 +2271,14 @@ select distinct
     0 as pitched,
     1 as is_lead,
     0 as is_opportunity
-from {{ ref('fct_sf_leads') }}
-where lead_stage = 'Merchant Reviewing Offers'
+from {{ ref('stg_sf_leads') }}
+where lead_status = 'Merchant Reviewing Offers'
 
 union all
 
 select distinct
     opportunity_id as id,
-    opportunity_stage_change_date as date,
+    last_stage_change_date as date,
     opportunity_stage as stage,
     utm_campaign,
     utm_source,
@@ -2338,14 +2338,14 @@ select distinct
     0 as pitched,
     0 as is_lead,
     1 as is_opportunity
-from {{ ref('fct_sf_opportunities_stage') }}
+from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Declined'
 
 union all
 
 select distinct
     opportunity_id as id,
-    opportunity_stage_change_date as date,
+    last_stage_change_date as date,
     opportunity_stage as stage,
     utm_campaign,
     utm_source,
@@ -2405,14 +2405,14 @@ select distinct
     0 as pitched,
     0 as is_lead,
     1 as is_opportunity
-from {{ ref('fct_sf_opportunities_stage') }}
+from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Contracts Out'
 
 union all
 
 select distinct
     opportunity_id as id,
-    opportunity_stage_change_date as date,
+    last_stage_change_date as date,
     opportunity_stage as stage,
     utm_campaign,
     utm_source,
@@ -2472,14 +2472,14 @@ select distinct
     0 as pitched,
     0 as is_lead,
     1 as is_opportunity
-from {{ ref('fct_sf_opportunities_stage') }}
+from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Ready to Order Contracts'
 
 union all
 
 select distinct
     opportunity_id as id,
-    opportunity_stage_change_date as date,
+    last_stage_change_date as date,
     opportunity_stage as stage,
     utm_campaign,
     utm_source,
@@ -2539,14 +2539,14 @@ select distinct
     0 as pitched,
     0 as is_lead,
     1 as is_opportunity
-from {{ ref('fct_sf_opportunities_stage') }}
+from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Referred'
 
 union all
 
 select distinct
     opportunity_id as id,
-    opportunity_stage_change_date as date,
+    last_stage_change_date as date,
     opportunity_stage as stage,
     utm_campaign,
     utm_source,
@@ -2606,14 +2606,14 @@ select distinct
     0 as pitched,
     0 as is_lead,
     1 as is_opportunity
-from {{ ref('fct_sf_opportunities_stage') }}
+from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Closed'
 
 union all
 
 select distinct
     opportunity_id as id,
-    opportunity_stage_change_date as date,
+    last_stage_change_date as date,
     opportunity_stage as stage,
     utm_campaign,
     utm_source,
@@ -2673,14 +2673,14 @@ select distinct
     0 as pitched,
     0 as is_lead,
     1 as is_opportunity
-from {{ ref('fct_sf_opportunities_stage') }}
+from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Sent to Operations'
 
 union all
 
 select distinct
     opportunity_id as id,
-    opportunity_stage_change_date as date,
+    last_stage_change_date as date,
     opportunity_stage as stage,
     utm_campaign,
     utm_source,
@@ -2740,14 +2740,14 @@ select distinct
     0 as pitched,
     0 as is_lead,
     1 as is_opportunity
-from {{ ref('fct_sf_opportunities_stage') }}
+from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Application In'
 
 union all
 
 select distinct
     opportunity_id as id,
-    opportunity_stage_change_date as date,
+    last_stage_change_date as date,
     opportunity_stage as stage,
     utm_campaign,
     utm_source,
@@ -2807,14 +2807,14 @@ select distinct
     0 as pitched,
     0 as is_lead,
     1 as is_opportunity
-from {{ ref('fct_sf_opportunities_stage') }}
+from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Renewal Prospecting'
 
 union all
 
 select distinct
     opportunity_id as id,
-    opportunity_stage_change_date as date,
+    last_stage_change_date as date,
     opportunity_stage as stage,
     utm_campaign,
     utm_source,
@@ -2874,14 +2874,14 @@ select distinct
     0 as pitched,
     0 as is_lead,
     1 as is_opportunity
-from {{ ref('fct_sf_opportunities_stage') }}
+from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Contracts In'
 
 union all
 
 select distinct
     opportunity_id as id,
-    opportunity_stage_change_date as date,
+    last_stage_change_date as date,
     opportunity_stage as stage,
     utm_campaign,
     utm_source,
@@ -2941,14 +2941,14 @@ select distinct
     0 as pitched,
     0 as is_lead,
     1 as is_opportunity
-from {{ ref('fct_sf_opportunities_stage') }}
+from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Application Missing Info'
 
 union all
 
 select distinct
     opportunity_id as id,
-    opportunity_stage_change_date as date,
+    last_stage_change_date as date,
     opportunity_stage as stage,
     utm_campaign,
     utm_source,
@@ -3008,14 +3008,14 @@ select distinct
     0 as pitched,
     0 as is_lead,
     1 as is_opportunity
-from {{ ref('fct_sf_opportunities_stage') }}
+from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Approved'
 
 union all
 
 select distinct
     opportunity_id as id,
-    opportunity_stage_change_date as date,
+    last_stage_change_date as date,
     opportunity_stage as stage,
     utm_campaign,
     utm_source,
@@ -3075,14 +3075,14 @@ select distinct
     0 as pitched,
     0 as is_lead,
     1 as is_opportunity
-from {{ ref('fct_sf_opportunities_stage') }}
+from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Underwriting'
 
 union all
 
 select distinct
     opportunity_id as id,
-    opportunity_stage_change_date as date,
+    last_stage_change_date as date,
     opportunity_stage as stage,
     utm_campaign,
     utm_source,
@@ -3142,14 +3142,14 @@ select distinct
     0 as pitched,
     0 as is_lead,
     1 as is_opportunity
-from {{ ref('fct_sf_opportunities_stage') }}
+from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Funded'
 
 union all
 
 select distinct
     opportunity_id as id,
-    opportunity_stage_change_date as date,
+    last_stage_change_date as date,
     opportunity_stage as stage,
     utm_campaign,
     utm_source,
@@ -3209,5 +3209,5 @@ select distinct
     1 as pitched,
     0 as is_lead,
     1 as is_opportunity
-from {{ ref('fct_sf_opportunities_stage') }}
+from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Pitched'
