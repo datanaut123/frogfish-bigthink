@@ -96,7 +96,8 @@ with
             case
                 when opportunity_stage = 'Underwriting' then 1 else 0
             end as is_underwriting,
-            gclid
+            gclid,
+            iso_name
 
         from {{ ref("fct_sf_opportunities_stage") }}
     )
@@ -105,6 +106,7 @@ select
     le.lead_id,
     coalesce(le.converted_opportunity_id, opp.opportunity_id) as opportunity_id,
     coalesce(le.gclid, opp.gclid) as gclid,
+    coalesce(le.iso_name, opp.iso_name) as iso_name,
     name,
     email,
     company,
@@ -125,7 +127,6 @@ select
     utm_source,
     utm_content,
     utm_campaign,
-    iso_name,
     is_3rd_attempt,
     is_closed_converted,
     is_closed_not_converted,
@@ -151,8 +152,10 @@ select
     is_sent_to_operations,
     is_submitted,
     is_underwriting,
-    case when iso_name = 'BTC Google' then 'Google' else 'Other' end as platform,
-    case when iso_name = 'BTC Google' then 'Paid' else 'Other' end as channel,
+    case when le.iso_name = 'BTC Google' 
+    or opp.iso_name = 'BTC Google' then 'Google' else 'Other' end as platform,
+    case when le.iso_name = 'BTC Google' 
+    or opp.iso_name = 'BTC Google' then 'Paid' else 'Other' end as channel,
 
 from leads as le
 left join lead_history as lh on le.lead_id = lh.lead_id
