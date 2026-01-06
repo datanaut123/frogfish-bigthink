@@ -21,7 +21,8 @@ select
     UTM_Medium__c as utm_medium,
     UTM_Content__c as utm_content,
     UTM_Term__c as utm_term,
-    ISO_Name__c as iso_name
+    ISO_Name__c as iso_name,
+    GCLID__c as gclid
 
     
 from opps

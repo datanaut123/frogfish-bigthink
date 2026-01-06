@@ -23,7 +23,8 @@ with
             utm_source,
             utm_content,
             utm_campaign,
-            iso_name
+            iso_name,
+            gclid
 
         from {{ ref('stg_sf_leads') }}
     ),
@@ -94,7 +95,8 @@ with
             case when opportunity_stage = 'Submitted' then 1 else 0 end as is_submitted,
             case
                 when opportunity_stage = 'Underwriting' then 1 else 0
-            end as is_underwriting
+            end as is_underwriting,
+            gclid
 
         from {{ ref("fct_sf_opportunities_stage") }}
     )
@@ -102,6 +104,7 @@ with
 select
     le.lead_id,
     coalesce(le.converted_opportunity_id, opp.opportunity_id) as opportunity_id,
+    coalesce(le.gclid, opp.gclid) as gclid,
     name,
     email,
     company,

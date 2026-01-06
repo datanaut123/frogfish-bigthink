@@ -19,7 +19,8 @@ with
             utm_medium,
             utm_content,
             utm_term,
-            iso_name
+            iso_name,
+            gclid
 
         from {{ ref("stg_sf_opportunity") }}
     ),
@@ -51,7 +52,8 @@ select
     utm_medium,
     utm_content,
     utm_term,
-    iso_name
+    iso_name,
+    gclid
 
 from oppor as opp
 left join oppor_stages as oppst on opp.opportunity_id = oppst.opportunity_id
