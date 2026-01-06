@@ -147,7 +147,9 @@ select
     is_renewal_prospecting,
     is_sent_to_operations,
     is_submitted,
-    is_underwriting
+    is_underwriting,
+    case when iso_name = 'BTC Google' then 'Google' else 'Other' end as platform,
+    case when iso_name = 'BTC Google' then 'Paid' else 'Other' end as channel,
 
 from leads as le
 left join lead_history as lh on le.lead_id = lh.lead_id
