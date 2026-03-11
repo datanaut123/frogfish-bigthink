@@ -1820,7 +1820,7 @@ union all
 
 select distinct
     lead_id as id,
-    lead_stage_date as date,
+    lead_stage_date as date, 
     lead_stage as stage,
     utm_campaign,
     utm_term,
