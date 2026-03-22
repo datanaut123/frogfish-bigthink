@@ -30,6 +30,7 @@ select
     csbs__UTM_Content__c as utm_content,
     csbs__UTM_Campaign__c as utm_campaign,
     ISO_Name__c as iso_name,
-    GCLID__c as gclid
+    GCLID__c as gclid,
+    csbs__Estimated_Monthly_Revenue__c as estimated_monthly_revenue
 
 from leads

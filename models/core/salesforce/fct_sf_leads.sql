@@ -24,7 +24,8 @@ with
             utm_content,
             utm_campaign,
             iso_name,
-            gclid
+            gclid,
+            estimated_monthly_revenue
 
         from {{ ref('stg_sf_leads') }}
     ),
@@ -75,6 +76,7 @@ select
     converted_contact_id,
     converted_opportunity_id,
     annual_revenue,
+    estimated_monthly_revenue,
     company_website,
     lead_created_date,
     utm_term,

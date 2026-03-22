@@ -16,6 +16,7 @@ select
     recordtypeid as record_type_id,
     csbs__Funded__c as funded_amount,
     csbs__Commission_Amount__c as commission,
+    csbs__Estimated_Monthly_Revenue__c as estimated_monthly_revenue,
     UTM_Campaign__c as utm_campaign,
     UTM_Source__c as utm_source,
     UTM_Medium__c as utm_medium,
