@@ -20,7 +20,8 @@ with
             sum(declined) as declined,
             sum(contracts_in) as contract_in,
             sum(contracts_out) as contract_out,
-            sum(funded) as funded
+            sum(funded) as funded,
+            sum(highest_offer_issued) as highest_offer_issued
 
         from {{ ref("fct_sf_opportunities_unfreeze_stages") }}
 
@@ -70,6 +71,7 @@ with
             contract_in,
             contract_out,
             funded,
+            highest_offer_issued,
             spend,
             clicks,
             impressions
