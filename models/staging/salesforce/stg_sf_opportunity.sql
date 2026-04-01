@@ -23,7 +23,8 @@ select
     UTM_Content__c as utm_content,
     UTM_Term__c as utm_term,
     ISO_Name__c as iso_name,
-    GCLID__c as gclid
+    GCLID__c as gclid,
+    Highest_Offer_Issued__c as highest_offer_issued
 
     
 from opps
