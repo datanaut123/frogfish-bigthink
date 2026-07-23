@@ -64,7 +64,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Open - Not Contacted'
 
@@ -136,7 +137,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Closed - Not Converted'
 
@@ -208,7 +210,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'New'
 
@@ -280,7 +283,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Do Not Contact'
 
@@ -352,7 +356,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Defaulted Merchant'
 
@@ -424,7 +429,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Specialty - DNQ'
 
@@ -496,7 +502,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Specialty Submitted'
 
@@ -568,7 +575,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Funded - In Repayment'
 
@@ -640,7 +648,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Defaulted'
 
@@ -712,7 +721,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Offers In'
 
@@ -784,7 +794,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = '3rd Attempt'
 
@@ -856,7 +867,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Open'
 
@@ -928,7 +940,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Closed - Lost'
 
@@ -1000,7 +1013,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Specialty Prospect'
 
@@ -1072,7 +1086,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Specialty - Unresponsive'
 
@@ -1144,7 +1159,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Specialty Funders Declined'
 
@@ -1216,7 +1232,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Working - Application Out'
 
@@ -1288,7 +1305,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Working - Contacted'
 
@@ -1360,7 +1378,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'FBIG Startup'
 
@@ -1432,7 +1451,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Specialty - App Out'
 
@@ -1504,7 +1524,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Opportunity'
 
@@ -1576,7 +1597,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Specialty - DNQ Future'
 
@@ -1648,7 +1670,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Specialty - In Contact'
 
@@ -1720,7 +1743,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Specialty Pending Additional Info'
 
@@ -1792,7 +1816,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Funders Declined'
 
@@ -1864,7 +1889,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Specialty Declined'
 
@@ -1936,7 +1962,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Hot Lead'
 
@@ -2008,7 +2035,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Closed - Converted'
 
@@ -2080,7 +2108,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Pending Additional INFO'
 
@@ -2152,7 +2181,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Specialty'
 
@@ -2224,7 +2254,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Submitted to Funders'
 
@@ -2296,7 +2327,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Closed - Won'
 
@@ -2368,7 +2400,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Specialty - App In Collecting Docs'
 
@@ -2440,7 +2473,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Merchant Reviewing Offers'
 
@@ -2512,7 +2546,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('fct_sf_opportunities_stage') }}
 where opportunity_stage = 'Declined'
 
@@ -2584,7 +2619,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('fct_sf_opportunities_stage') }}
 where opportunity_stage = 'Contracts Out'
 
@@ -2656,7 +2692,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('fct_sf_opportunities_stage') }}
 where opportunity_stage = 'Ready to Order Contracts'
 
@@ -2728,7 +2765,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('fct_sf_opportunities_stage') }}
 where opportunity_stage = 'Referred'
 
@@ -2800,7 +2838,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('fct_sf_opportunities_stage') }}
 where opportunity_stage = 'Closed'
 
@@ -2872,7 +2911,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('fct_sf_opportunities_stage') }}
 where opportunity_stage = 'Sent to Operations'
 
@@ -2944,7 +2984,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('fct_sf_opportunities_stage') }}
 where opportunity_stage = 'Application In'
 
@@ -3016,7 +3057,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('fct_sf_opportunities_stage') }}
 where opportunity_stage = 'Renewal Prospecting'
 
@@ -3088,7 +3130,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('fct_sf_opportunities_stage') }}
 where opportunity_stage = 'Contracts In'
 
@@ -3160,7 +3203,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('fct_sf_opportunities_stage') }}
 where opportunity_stage = 'Application Missing Info'
 
@@ -3232,7 +3276,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('fct_sf_opportunities_stage') }}
 where opportunity_stage = 'Approved'
 
@@ -3304,7 +3349,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('fct_sf_opportunities_stage') }}
 where opportunity_stage = 'Underwriting'
 
@@ -3376,7 +3422,8 @@ select distinct
     1 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('fct_sf_opportunities_stage') }}
 where opportunity_stage = 'Funded'
 
@@ -3448,6 +3495,7 @@ select distinct
     0 as funded,
     1 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('fct_sf_opportunities_stage') }}
 where opportunity_stage = 'Pitched'

@@ -24,7 +24,10 @@ select
     UTM_Term__c as utm_term,
     ISO_Name__c as iso_name,
     GCLID__c as gclid,
-    Highest_Offer_Issued__c as highest_offer_issued
+    Highest_Offer_Issued__c as highest_offer_issued,
+    case
+        when lower(UTM_Campaign__c) like '%heloc%' then 'Heloc' else 'Others'
+    end as product
 
     
 from opps

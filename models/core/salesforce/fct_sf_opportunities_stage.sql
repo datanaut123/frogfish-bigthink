@@ -23,6 +23,7 @@ with
             iso_name,
             gclid,
             highest_offer_issued,
+            product
 
         from {{ ref("stg_sf_opportunity") }}
     ),
@@ -57,7 +58,8 @@ select
     utm_term,
     iso_name,
     gclid,
-    highest_offer_issued
+    highest_offer_issued,
+    product
 
 from oppor as opp
 left join oppor_stages as oppst on opp.opportunity_id = oppst.opportunity_id

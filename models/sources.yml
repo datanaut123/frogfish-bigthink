@@ -13,6 +13,14 @@ sources:
         identifier: campaign
         description: "Contains data about GoogleAds source synced."
 
+  - name: Meta_Ads_Heloc  # Logical name for the source
+    database: bigthink  # BigQuery project ID
+    schema: Meta_Ads_Heloc  # BigQuery dataset
+    tables:
+      - name: ads_insights # name you want to call it
+        identifier: ads_insights # name for the source table
+        description: "Contains data about Meta Ads source synced from Airbyte."
+
   - name: Salesforce  # Logical name for the source
     database: bigthink  # BigQuery project ID
     schema: Salesforce  # BigQuery dataset
