@@ -24,7 +24,8 @@ with
             utm_content,
             utm_campaign,
             iso_name,
-            gclid
+            gclid,
+            product
 
         from {{ ref('stg_sf_leads') }}
     ),
@@ -97,7 +98,8 @@ with
                 when opportunity_stage = 'Underwriting' then 1 else 0
             end as is_underwriting,
             gclid,
-            iso_name
+            iso_name,
+            product
 
         from {{ ref("fct_sf_opportunities_stage") }}
     )
@@ -156,6 +158,7 @@ select
     or opp.iso_name = 'BTC Google' then 'Google' else 'Other' end as platform,
     case when le.iso_name = 'BTC Google' 
     or opp.iso_name = 'BTC Google' then 'Paid' else 'Other' end as channel,
+    coalesce(le.product,opp.product) as product
 
 from leads as le
 left join lead_history as lh on le.lead_id = lh.lead_id

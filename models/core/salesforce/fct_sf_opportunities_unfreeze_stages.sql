@@ -60,7 +60,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Open - Not Contacted'
 
@@ -128,7 +129,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Closed - Not Converted'
 
@@ -196,7 +198,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'New'
 
@@ -264,7 +267,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Do Not Contact'
 
@@ -332,7 +336,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Defaulted Merchant'
 
@@ -400,7 +405,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Specialty - DNQ'
 
@@ -468,7 +474,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Specialty Submitted'
 
@@ -536,7 +543,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Funded - In Repayment'
 
@@ -604,7 +612,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Defaulted'
 
@@ -672,7 +681,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Offers In'
 
@@ -740,7 +750,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = '3rd Attempt'
 
@@ -808,7 +819,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Open'
 
@@ -876,7 +888,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Closed - Lost'
 
@@ -944,7 +957,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Specialty Prospect'
 
@@ -1012,7 +1026,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Specialty - Unresponsive'
 
@@ -1080,7 +1095,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Specialty Funders Declined'
 
@@ -1148,7 +1164,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Working - Application Out'
 
@@ -1216,7 +1233,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Working - Contacted'
 
@@ -1284,7 +1302,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'FBIG Startup'
 
@@ -1352,7 +1371,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Specialty - App Out'
 
@@ -1420,7 +1440,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Opportunity'
 
@@ -1488,7 +1509,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Specialty - DNQ Future'
 
@@ -1556,7 +1578,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Specialty - In Contact'
 
@@ -1624,7 +1647,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Specialty Pending Additional Info'
 
@@ -1692,7 +1716,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Funders Declined'
 
@@ -1760,7 +1785,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Specialty Declined'
 
@@ -1828,7 +1854,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('fct_sf_leads') }}
 where lead_stage = 'Hot Lead'
 
@@ -1896,7 +1923,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Closed - Converted'
 
@@ -1964,7 +1992,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Pending Additional INFO'
 
@@ -2032,7 +2061,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Specialty'
 
@@ -2100,7 +2130,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Submitted to Funders'
 
@@ -2168,7 +2199,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Closed - Won'
 
@@ -2236,7 +2268,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Specialty - App In Collecting Docs'
 
@@ -2304,7 +2337,8 @@ select distinct
     0 as funded,
     0 as pitched,
     1 as is_lead,
-    0 as is_opportunity
+    0 as is_opportunity,
+    product
 from {{ ref('stg_sf_leads') }}
 where lead_status = 'Merchant Reviewing Offers'
 
@@ -2372,7 +2406,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Declined'
 
@@ -2440,7 +2475,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Contracts Out'
 
@@ -2508,7 +2544,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Ready to Order Contracts'
 
@@ -2576,7 +2613,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Referred'
 
@@ -2644,7 +2682,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Closed'
 
@@ -2712,7 +2751,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Sent to Operations'
 
@@ -2780,7 +2820,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Application In'
 
@@ -2848,7 +2889,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Renewal Prospecting'
 
@@ -2916,7 +2958,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Contracts In'
 
@@ -2984,7 +3027,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Application Missing Info'
 
@@ -3052,7 +3096,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Approved'
 
@@ -3120,7 +3165,8 @@ select distinct
     0 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Underwriting'
 
@@ -3188,7 +3234,8 @@ select distinct
     1 as funded,
     0 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Funded'
 
@@ -3256,6 +3303,7 @@ select distinct
     0 as funded,
     1 as pitched,
     0 as is_lead,
-    1 as is_opportunity
+    1 as is_opportunity,
+    product
 from {{ ref('stg_sf_opportunity') }}
 where opportunity_stage = 'Pitched'

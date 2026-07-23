@@ -25,32 +25,32 @@ with
             utm_campaign,
             iso_name,
             gclid,
-            estimated_monthly_revenue
+            estimated_monthly_revenue,
+            case
+                when utm_campaign like '%heloc%' then 'Heloc' else 'Others'
+            end as product
 
         from {{ ref('stg_sf_leads') }}
     ),
 
     lead_history as (
-        select
-            lead_id,
-            lead_stage,
-            lead_stage_date
+        select lead_id, lead_stage, lead_stage_date
 
         from {{ ref('stg_sf_lead_history') }}
 
     ),
 
-opportunities as (
-    SELECT distinct 
-        opportunity_id,
-        opportunity_name,
-        opportunity_amount,
-        lead_source,
-        opportunity_created_date,
-        funded_amount,
-        commission
-    from {{ref('stg_sf_opportunity')}}
-)
+    opportunities as (
+        select distinct
+            opportunity_id,
+            opportunity_name,
+            opportunity_amount,
+            lead_source,
+            opportunity_created_date,
+            funded_amount,
+            commission
+        from {{ ref('stg_sf_opportunity') }}
+    )
 
 select
     coalesce(le.lead_id, lh.lead_id) as lead_id,
@@ -65,7 +65,7 @@ select
     name,
     email,
     company,
-    coalesce(le.lead_source,op.lead_source) as lead_source,
+    coalesce(le.lead_source, op.lead_source) as lead_source,
     lead_status,
     is_converted,
     city,
@@ -85,7 +85,8 @@ select
     utm_content,
     utm_campaign,
     iso_name,
-    gclid
+    gclid,
+    product
 
 from leads as le
 left join lead_history as lh on le.lead_id = lh.lead_id

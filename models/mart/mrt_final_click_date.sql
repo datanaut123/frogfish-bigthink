@@ -21,11 +21,12 @@ with
             sum(contracts_in) as contract_in,
             sum(contracts_out) as contract_out,
             sum(funded) as funded,
-            sum(highest_offer_issued) as highest_offer_issued
+            sum(highest_offer_issued) as highest_offer_issued,
+            product
 
         from {{ ref("fct_sf_opportunities") }}
 
-        group by date, iso_name, utm_source
+        group by date, iso_name, utm_source, product
     ),
 
     ads as (
@@ -44,9 +45,10 @@ with
             sum(spend) as spend,
             sum(clicks) as clicks,
             sum(impressions) as impressions,
+            product
 
         from {{ ref("mrt_ads") }}
-        group by date, platform, campaign_name
+        group by date, platform, campaign_name, product
     ),
 
     data_join as (
@@ -59,6 +61,7 @@ with
             a.campaign_name as a_campaign_name,
             a.platform as a_platform,
             a.channel as a_channel,
+            a.product as a_product,
             funded_amount,
             commission,
             hot_lead,
@@ -74,7 +77,8 @@ with
             highest_offer_issued,
             spend,
             clicks,
-            impressions
+            impressions,
+            coalesce(a.product, l.product) as product
 
         from ads as a
         full join
@@ -84,19 +88,20 @@ with
                 and a.platform = l.platform
                 and a.channel = l.channel
                 and l.campaign_name = a.join_campaign
+                and l.product = a.product
             )
     ),
     deduplication as (
         select
             *,
             row_number() over (
-                partition by a_date, a_platform, a_channel, a_campaign_name order by a_date asc
+                partition by a_date, a_platform, a_channel, a_campaign_name, a_product order by a_date asc
 
             ) as rn
         from data_join
     )
 select
-    * except (spend, impressions, clicks, a_date, a_platform, a_channel, a_campaign_name),
+    * except (spend, impressions, clicks, a_date, a_platform, a_channel, a_campaign_name, a_product),
     case when rn = 1 then spend else 0 end as spend,
     case when rn = 1 then impressions else 0 end as impressions,
     case when rn = 1 then clicks else 0 end as clicks

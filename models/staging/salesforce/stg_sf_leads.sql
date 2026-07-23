@@ -31,6 +31,10 @@ select
     csbs__UTM_Campaign__c as utm_campaign,
     ISO_Name__c as iso_name,
     GCLID__c as gclid,
-    csbs__Estimated_Monthly_Revenue__c as estimated_monthly_revenue
+    csbs__Estimated_Monthly_Revenue__c as estimated_monthly_revenue,
+    case
+        when lower(csbs__UTM_Campaign__c) like '%heloc%' then 'Heloc' else 'Others'
+    end as product
+
 
 from leads
