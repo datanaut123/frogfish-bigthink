@@ -3,9 +3,19 @@ with
         select
             date(date) as date,
             case
-                when iso_name = 'BTC Google' then 'Google' else 'Other'
+                when
+                    (iso_name = 'BTC Google')
+                    or (product = 'Heloc' and iso_name = 'FrogFish HELOC')
+                then 'Google'
+                else 'Other'
             end as platform,
-            case when iso_name = 'BTC Google' then 'Paid' else 'Other' end as channel,
+            case
+                when
+                    (iso_name = 'BTC Google')
+                    or (product = 'Heloc' and iso_name = 'FrogFish HELOC')
+                then 'Paid'
+                else 'Other'
+            end as channel,
             case
                 when iso_name = 'BTC Google' then utm_source else 'Unknown'
             end as campaign_name,
