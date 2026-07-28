@@ -26,9 +26,7 @@ with
             iso_name,
             gclid,
             estimated_monthly_revenue,
-            case
-                when utm_campaign like '%heloc%' then 'Heloc' else 'Others'
-            end as product
+            product
 
         from {{ ref('stg_sf_leads') }}
     ),

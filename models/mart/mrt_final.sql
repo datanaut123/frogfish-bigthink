@@ -3,9 +3,19 @@ with
         select
             date(date) as date,
             case
-                when iso_name = 'BTC Google' then 'Google' else 'Other'
+                when
+                    (iso_name = 'BTC Google')
+                    or (product = 'Heloc' and iso_name = 'FrogFish HELOC')
+                then 'Google'
+                else 'Other'
             end as platform,
-            case when iso_name = 'BTC Google' then 'Paid' else 'Other' end as channel,
+            case
+                when
+                    (iso_name = 'BTC Google')
+                    or (product = 'Heloc' and iso_name = 'FrogFish HELOC')
+                then 'Paid'
+                else 'Other'
+            end as channel,
             case
                 when iso_name = 'BTC Google' then utm_source else 'Unknown'
             end as campaign_name,
@@ -95,14 +105,23 @@ with
         select
             *,
             row_number() over (
-                partition by a_date, a_platform, a_channel, a_campaign_name,a_product
+                partition by a_date, a_platform, a_channel, a_campaign_name, a_product
                 order by a_date desc
 
             ) as rn
         from data_join
     )
 select
-    * except (spend, impressions, clicks, a_date, a_platform, a_channel, a_campaign_name, a_product),
+    * except (
+        spend,
+        impressions,
+        clicks,
+        a_date,
+        a_platform,
+        a_channel,
+        a_campaign_name,
+        a_product
+    ),
     case when rn = 1 then spend else 0 end as spend,
     case when rn = 1 then impressions else 0 end as impressions,
     case when rn = 1 then clicks else 0 end as clicks
