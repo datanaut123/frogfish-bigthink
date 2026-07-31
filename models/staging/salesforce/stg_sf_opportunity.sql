@@ -26,7 +26,7 @@ select
     GCLID__c as gclid,
     Highest_Offer_Issued__c as highest_offer_issued,
     Sent_for_Heloc__c as sent_for_heloc,
-    case when Sent_for_Heloc__c is true then 'Heloc' else 'Others' end as product
+    case when  ISO_Name__c = 'FrogFish HELOC' then 'Heloc' else 'Others' end as product
     -- case
     --     when lower(UTM_Campaign__c) like '%heloc%' then 'Heloc' else 'Others'
     -- end as product
