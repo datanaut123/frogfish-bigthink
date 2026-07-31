@@ -33,10 +33,7 @@ select
     GCLID__c as gclid,
     csbs__Estimated_Monthly_Revenue__c as estimated_monthly_revenue,
     Sent_for_Heloc__c as sent_for_heloc,
-    case when Sent_for_Heloc__c is true then 'Heloc' else 'Others' end as product
-    -- case
-    --     when lower(csbs__UTM_Campaign__c) like '%heloc%' then 'Heloc' else 'Others'
-    -- end as product
+    case when  ISO_Name__c = 'FrogFish HELOC' then 'Heloc' else 'Others' end as product
 
 
 from leads

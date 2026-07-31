@@ -4,20 +4,29 @@ with
             date(date) as date,
             case
                 when
-                    (iso_name = 'BTC Google')
-                    or (product = 'Heloc' and iso_name = 'FrogFish HELOC')
+                    iso_name = 'BTC Google'
+                    or (utm_source = 'google' and utm_medium = 'cpc')
                 then 'Google'
+                when utm_source = 'fb'
+                then 'Meta'
                 else 'Other'
             end as platform,
             case
                 when
-                    (iso_name = 'BTC Google')
-                    or (product = 'Heloc' and iso_name = 'FrogFish HELOC')
+                    (utm_source = 'google' and utm_medium = 'cpc')
+                    or utm_source = 'fb'
+                    or iso_name = 'BTC Google'
                 then 'Paid'
                 else 'Other'
             end as channel,
+
             case
-                when iso_name = 'BTC Google' then utm_source else 'Unknown'
+                when iso_name = 'BTC Google'
+                then utm_source
+                when utm_source = 'google' and utm_medium = 'cpc'
+                then utm_campaign
+                when utm_source = 'fb'
+                then utm_campaign
             end as campaign_name,
             sum(funded_amount) as funded_amount,
             sum(commission) as commission,
@@ -36,7 +45,7 @@ with
 
         from {{ ref("fct_sf_opportunities_unfreeze_stages") }}
 
-        group by date, iso_name, utm_source, product
+        group by date, utm_source, product, utm_medium, utm_campaign, iso_name
     ),
 
     ads as (
